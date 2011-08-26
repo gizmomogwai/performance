@@ -37,9 +37,9 @@ the data is pushed to the application byte by byte. This is done 10 times.
   <tr><td>d2-4</td><td>128863360</td><td>439</td><td>using std.c.stdio.fread with a semantic like java (return -1 for eof).</td></tr>
   <tr><td>d2-5</td><td>128863360</td><td>357</td><td>using mmfile and a direct pointer to the slice.</td></tr>
   <tr><td>d2-6</td><td>128863360</td><td>600</td><td>using std.stdio.File with arrayslicing.</td></tr>
-  <tr><td>java-1</td><td>3025</td><td>using BufferedInputStream.read().</td></tr>
-  <tr><td>java-2</td><td>339</td><td>using a read into a buffer[1] with buffering.</td></tr>
-  <tr><td>java-3</td><td>261</td><td>using nio and terminating with BufferUnderflowException.</td></tr>
+  <tr><td>java-1</td><td>128863360</td><td>3025</td><td>using BufferedInputStream.read().</td></tr>
+  <tr><td>java-2</td><td>128863360</td><td>339</td><td>using a read into a buffer[1] with buffering.</td></tr>
+  <tr><td>java-3</td><td>128863360</td><td>261</td><td>using nio and terminating with BufferUnderflowException.</td></tr>
 </table>
 
 Outlook
