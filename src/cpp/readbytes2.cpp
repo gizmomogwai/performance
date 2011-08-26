@@ -53,6 +53,6 @@ int main(int argc, char** args) {
   sw.start();
   size_t count = readBytes();
   sw.stop();
-  std::cout << "Time for " << count << " bytes: " << sw.delta() << std::endl;
+  std::cout << "<tr><td>cpp-1</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>straight forward implementation using mmap.</td></tr>" << std::endl;
   return 0;
 }

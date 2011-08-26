@@ -57,6 +57,6 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("Time for ", count, " bytes: ", sw.peek().msecs);
+  writeln("<tr><td>d2-4</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.c.stdio.fread with a semantic like java (return -1 for eof).</td></tr>");
   return 0;
 }
