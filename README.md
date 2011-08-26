@@ -28,13 +28,16 @@ the data is pushed to the application byte by byte. This is done 10 times.
     <th>Time in ms for a file of size 12886336</th>
     <th>Description</th>
   </tr>
-  <tr><td>cpp</td><td>114</td><td>straight forward implementation using fread with buffering.</td></tr>
+  <tr><td>cpp-1</td><td>114</td><td>straight forward implementation using fread with buffering.</td></tr>
+  <tr><td>cpp-2</td><td>84</td><td>straight forward implementation using mmap.</td></tr>
   <tr><td>d2-1</td><td>1794</td><td>using std.stream.BufferedFile with ubyte[1].</td></tr>
   <tr><td>d2-2</td><td>521</td><td>using std.c.stdio.fread with buffering (returning nr of bytes and taking a naked ptr for the result).</td></tr>
   <tr><td>d2-3</td><td>482</td><td>using std.c.stdio.fread with buffering (result is false for eof and returnvalue is an out-param).</td></tr>
   <tr><td>d2-4</td><td>480</td><td>using std.c.stdio.fread with a semantic like java (return -1 for eof).</td></tr>
+  <tr><td>d2-5</td><td>493</td><td>using mmfile and a direct pointer to the slice.</td></tr>
   <tr><td>java-1</td><td>3025</td><td>using BufferedInputStream.read().</td></tr>
   <tr><td>java-2</td><td>339</td><td>using a read into a buffer[1] with buffering.</td></tr>
+  <tr><td>java-3</td><td>261</td><td>using nio and terminating with BufferUnderflowException.</td></tr>
 </table>
 
 Outlook

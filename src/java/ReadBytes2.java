@@ -29,7 +29,7 @@ public class ReadBytes2 {
       return fInput.read(fBuffer);
     }
   }
-
+  
   private static int readBytes() throws Exception {
     int count = 0;
     for (int i = 0; i < 10; i++) {

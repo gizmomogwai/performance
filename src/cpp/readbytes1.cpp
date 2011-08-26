@@ -15,6 +15,9 @@ public:
   StdioFileReader(std::string s) : fFile(fopen(s.c_str(), "rb")), fBufferPtr(fBuffer), fBufferEnd(fBuffer) {
     assert(fFile);
   }
+  ~StdioFileReader() {
+    fclose(fFile);
+  }
 
   int read() {
     bool finished = fBufferPtr == fBufferEnd;
