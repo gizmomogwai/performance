@@ -18,7 +18,7 @@ struct FileReader {
   extern(C) int function(void*, size_t, size_t, FILE*) fRead;
 
   public this(string s) {
-    fLibcHandle = dlopen("libc.so.6", RTLD_LAZY);
+    fLibcHandle = dlopen("/lib/x86_64-linux-gnu/libc.so.6", RTLD_LAZY);
     assert(fLibcHandle != null);
     fRead = cast(int function(void*, size_t, size_t, FILE*))dlsym(fLibcHandle, "fread");
     assert(fRead);

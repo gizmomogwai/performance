@@ -16,7 +16,7 @@ private:
 public:
   StdioFileReader(std::string s) : fFile(fopen(s.c_str(), "rb")), fBufferPtr(fBuffer), fBufferEnd(fBuffer) {
     assert(fFile);
-    fLibc = dlopen("libc.so.6", RTLD_LAZY);
+    fLibc = dlopen("/lib/x86_64-linux-gnu/libc.so.6", RTLD_LAZY);
     assert(fLibc);
     fRead = (int (*)(void*, size_t, size_t, FILE*))(dlsym(fLibc, "fread"));
     assert(fRead);
