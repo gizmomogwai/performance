@@ -32,7 +32,7 @@ public:
 
 private:
   bool fillBuffer() {
-    size_t l = fread(fBuffer, 1, BUFFER_SIZE, fFile);
+    size_t l = fread_unlocked(fBuffer, 1, BUFFER_SIZE, fFile);
     fBufferPtr = fBuffer;
     fBufferEnd = fBufferPtr+l;
     return l == 0;
