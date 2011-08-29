@@ -10,7 +10,7 @@ import std.c.linux.linux;
 struct FileReader {
 
   private FILE* fFile;
-  private static const BUFFER_SIZE = 8192;
+  private static const BUFFER_SIZE = 1024;
   private ubyte fBuffer[BUFFER_SIZE];
   private ubyte* fBufferPtr;
   private ubyte* fBufferEnd;

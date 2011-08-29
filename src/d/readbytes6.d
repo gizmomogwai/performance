@@ -10,7 +10,7 @@ import std.mmfile;
 struct FileReader {
 
   private File fFile;
-  private enum BUFFER_SIZE = 8192;//why not enum?
+  private enum BUFFER_SIZE = 1024;//why not enum?
   private ubyte[BUFFER_SIZE] fBuffer=void;//avoid (costly) initialization to 0
   private ubyte[] buff;
 
