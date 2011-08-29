@@ -6,21 +6,22 @@ cpp: target/cpp/readbytes1 target/cpp/readbytes2 target/cpp/readbytes3 target/cp
 	@target/cpp/readbytes3
 	@target/cpp/readbytes4
 
-d: target/d/readbytes1 target/d/readbytes2 target/d/readbytes3 target/d/readbytes4 target/d/readbytes5 target/d/readbytes6
+d: target/d/readbytes1 target/d/readbytes2 target/d/readbytes3 target/d/readbytes4 target/d/readbytes5 target/d/readbytes6 target/d/readbytes7
 	@target/d/readbytes1
 	@target/d/readbytes2
 	@target/d/readbytes3
 	@target/d/readbytes4
 	@target/d/readbytes5
 	@target/d/readbytes6
+	@target/d/readbytes7
 
-target/cpp/readbytes1: src/cpp/readbytes1.cpp target/cpp
+target/cpp/readbytes1: src/cpp/readbytes1.cpp | target/cpp
 	g++ -O3 -g $< -o $@
-target/cpp/readbytes2: src/cpp/readbytes2.cpp target/cpp
+target/cpp/readbytes2: src/cpp/readbytes2.cpp | target/cpp
 	g++ -O3 -g $< -o $@
-target/cpp/readbytes3: src/cpp/readbytes3.cpp target/cpp
+target/cpp/readbytes3: src/cpp/readbytes3.cpp | target/cpp
 	g++ -O3 -g $< -o $@
-target/cpp/readbytes4: src/cpp/readbytes4.cpp target/cpp
+target/cpp/readbytes4: src/cpp/readbytes4.cpp | target/cpp
 	g++ -O3 -g $< -o $@
 
 
@@ -36,6 +37,8 @@ target/d/readbytes5: src/d/readbytes5.d | target/d
 	dmd -O -release $< -of$@
 target/d/readbytes6: src/d/readbytes6.d | target/d
 	dmd -O -release $< -of$@
+target/d/readbytes7: src/d/readbytes7.d | target/d
+	dmd -O -release $< -of$@ -L-ldl
 
 
 PROTO_HOME=~/Downloads/protobuf-2.4.1
