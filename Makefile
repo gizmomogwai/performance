@@ -1,10 +1,11 @@
 all: cpp d codegen
 
-cpp: target/cpp/readbytes1 target/cpp/readbytes2 target/cpp/readbytes3 target/cpp/readbytes4
+cpp: target/cpp/readbytes1 target/cpp/readbytes2 target/cpp/readbytes3 target/cpp/readbytes4 target/cpp/readbytes5
 	@target/cpp/readbytes1
 	@target/cpp/readbytes2
 	@target/cpp/readbytes3
 	@target/cpp/readbytes4
+	@target/cpp/readbytes5
 
 d: target/d/readbytes1 target/d/readbytes2 target/d/readbytes3 target/d/readbytes4 target/d/readbytes5 target/d/readbytes6 target/d/readbytes7
 	@target/d/readbytes1
@@ -23,6 +24,8 @@ target/cpp/readbytes3: src/cpp/readbytes3.cpp | target/cpp
 	g++ -O3 -g $< -o $@
 target/cpp/readbytes4: src/cpp/readbytes4.cpp | target/cpp
 	g++ -O3 -g $< -o $@
+target/cpp/readbytes5: src/cpp/readbytes5.cpp | target/cpp
+	g++ -O3 -g $< -o $@ -ldl
 
 
 target/d/readbytes1: src/d/readbytes1.d | target/d
