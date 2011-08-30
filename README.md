@@ -29,18 +29,23 @@ the data is pushed to the application byte by byte. This is done 10 times.
     <th>Time in ms for a file of size 12886336</th>
     <th>Description</th>
   </tr>
-  <tr><td>cpp-1</td><td>128863360</td><td>115</td><td>straight forward implementation using fread with buffering.</td></tr>
-  <tr><td>cpp-2</td><td>128863360</td><td>85</td><td>straight forward implementation using mmap.</td></tr>
-  <tr><td>cpp-3</td><td>128863360</td><td>953</td><td>using plain fgetc.</td></tr>
-  <tr><td>cpp-3</td><td>128863360</td><td>274</td><td>using plain fgetc_unlocked.</td></tr>
-  <tr><td>cpp-5</td><td>128863360</td><td>115</td><td>using dlopen("libc.so.6") and dlsym("fread").</td></tr>
-  <tr><td>d2-1</td><td>128863360</td><td>1695</td><td>using std.stream.BufferedFile with ubyte[1].</td></tr>
-  <tr><td>d2-2</td><td>128863360</td><td>537</td><td>using std.c.stdio.fread with buffering (returning nr of bytes and taking a naked ptr for the result).</td></tr>
-  <tr><td>d2-3</td><td>128863360</td><td>539</td><td>using std.c.stdio.fread with buffering (result is false for eof and returnvalue is an out-param).</td></tr>
-  <tr><td>d2-4</td><td>128863360</td><td>454</td><td>using std.c.stdio.fread with a semantic like java (return -1 for eof).</td></tr>
-  <tr><td>d2-5</td><td>128863360</td><td>359</td><td>using mmfile and a direct pointer to the slice.</td></tr>
-  <tr><td>d2-6</td><td>128863360</td><td>600</td><td>using std.stdio.File with arrayslicing.</td></tr>
-  <tr><td>d2-7</td><td>128863360</td><td>504</td><td>using dlopen("libc") and dlsym("fread").</td></tr>  
+  <tr><td>gcc-1</td><td>128863360</td><td>112</td><td>straight forward implementation using fread with buffering.</td></tr>
+  <tr><td>gcc-2</td><td>128863360</td><td>85</td><td>straight forward implementation using mmap.</td></tr>
+  <tr><td>gcc-3</td><td>128863360</td><td>950</td><td>using plain fgetc.</td></tr>
+  <tr><td>gcc-3</td><td>128863360</td><td>273</td><td>using plain fgetc_unlocked.</td></tr>
+  <tr><td>gcc-5</td><td>128863360</td><td>113</td><td>using dlopen("libc.so.6") and dlsym("fread").</td></tr>
+  <tr><td>llvm-1</td><td>128863360</td><td>155</td><td>straight forward implementation using fread with buffering.</td></tr>
+  <tr><td>llvm-2</td><td>128863360</td><td>145</td><td>straight forward implementation using mmap.</td></tr>
+  <tr><td>llvm-3</td><td>128863360</td><td>950</td><td>using plain fgetc.</td></tr>
+  <tr><td>llvm-3</td><td>128863360</td><td>401</td><td>using plain fgetc_unlocked.</td></tr>
+  <tr><td>llvm-5</td><td>128863360</td><td>155</td><td>using dlopen("libc.so.6") and dlsym("fread").</td></tr>
+  <tr><td>d2-1</td><td>128863360</td><td>1697</td><td>using std.stream.BufferedFile with ubyte[1].</td></tr>
+  <tr><td>d2-2</td><td>128863360</td><td>544</td><td>using std.c.stdio.fread with buffering (returning nr of bytes and taking a naked ptr for the result).</td></tr>
+  <tr><td>d2-3</td><td>128863360</td><td>555</td><td>using std.c.stdio.fread with buffering (result is false for eof and returnvalue is an out-param).</td></tr>
+  <tr><td>d2-4</td><td>128863360</td><td>452</td><td>using std.c.stdio.fread with a semantic like java (return -1 for eof).</td></tr>
+  <tr><td>d2-5</td><td>128863360</td><td>357</td><td>using mmfile and a direct pointer to the slice.</td></tr>
+  <tr><td>d2-6</td><td>128863360</td><td>596</td><td>using std.stdio.File with arrayslicing.</td></tr>
+  <tr><td>d2-7</td><td>128863360</td><td>508</td><td>using dlopen("libc") and dlsym("fread").</td></tr>
   <tr><td>java-1</td><td>128863360</td><td>3025</td><td>using BufferedInputStream.read().</td></tr>
   <tr><td>java-2</td><td>128863360</td><td>339</td><td>using a read into a buffer[1] with buffering.</td></tr>
   <tr><td>java-3</td><td>128863360</td><td>261</td><td>using nio and terminating with BufferUnderflowException.</td></tr>

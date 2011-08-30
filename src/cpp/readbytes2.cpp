@@ -3,7 +3,7 @@
 #include <sys/mman.h>
 #include <sys/stat.h>
 #include <stdio.h>
-       #include <fcntl.h>
+#include <fcntl.h>
 
 class MemoryMappedFileReader {
 private:
@@ -53,6 +53,6 @@ int main(int argc, char** args) {
   sw.start();
   size_t count = readBytes();
   sw.stop();
-  std::cout << "<tr><td>cpp-2</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>straight forward implementation using mmap.</td></tr>" << std::endl;
+  std::cout << "<tr><td>" << V << "-2</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>straight forward implementation using mmap.</td></tr>" << std::endl;
   return 0;
 }

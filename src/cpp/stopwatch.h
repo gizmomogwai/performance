@@ -18,7 +18,7 @@ public:
     fStart = currentTimeMillis();
   }
 
-  long stop() {
+  void stop() {
     fEnd = currentTimeMillis();
   }
 

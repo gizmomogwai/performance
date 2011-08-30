@@ -39,6 +39,6 @@ int main(int argc, char** args) {
   sw.start();
   size_t count = readBytes();
   sw.stop();
-  std::cout << "<tr><td>cpp-3</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>using plain fgetc.</td></tr>" << std::endl;
+  std::cout << "<tr><td>" << V << "-3</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>using plain fgetc.</td></tr>" << std::endl;
   return 0;
 }

@@ -63,6 +63,6 @@ int main(int argc, char** args) {
   sw.start();
   size_t count = readBytes();
   sw.stop();
-  std::cout << "<tr><td>cpp-5</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>using dlopen(\"libc.so.6\") and dlsym(\"fread\").</td></tr>" << std::endl;
+  std::cout << "<tr><td>" << V << "-5</td><td>" << count << "</td><td>" << sw.delta() << "</td><td>using dlopen(\"libc.so.6\") and dlsym(\"fread\").</td></tr>" << std::endl;
   return 0;
 }
