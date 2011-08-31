@@ -1,8 +1,8 @@
 CPP_SOURCES = (1..5).map{|i|"src/cpp/readbytes#{i}.cpp"}
 D_SOURCES = (1..7).map{|i|"src/d/readbytes#{i}.d"}
 
-CPP_COMPILER = ['g++', 'llvm-c++']
-D_COMPILER = [{:name=>'dmd', :flags=>"-O -release"}, {:name=>'ldc2', :flags => "-O5 -release"}]
+CPP_COMPILER = [{:name=>'g++',:flags=>'-O3'}, {:name=>'llvm-c++',:flags=>'-O5'}]
+D_COMPILER = [{:name=>'dmd', :flags=>"-L-ldl -O -release -of"}, {:name=>'ldc2', :flags => "-L-ldl -O3 -release -of"}, {:name=>'gdc', :flags=>'-ldl -O3 -o'}]
 
 run_all = []
 desc 'default task'
@@ -10,7 +10,7 @@ task :default
 
 CPP_COMPILER.each { |compiler|
   CPP_SOURCES.each { |source|
-    output_name = "target/#{compiler}/#{source}.exe"
+    output_name = "target/#{compiler[:name]}/#{source}.exe"
     dir_name = File.dirname(output_name)
 
     desc dir_name
@@ -18,7 +18,7 @@ CPP_COMPILER.each { |compiler|
 
     desc output_name
     file output_name => [source, dir_name] { |t|
-      sh "#{compiler} -DV=\\\"#{compiler}\\\" -O3 #{source} -o #{t.name} -ldl"
+      sh "#{compiler[:name]} -DV=\\\"#{compiler[:name]}\\\" #{compiler[:flags]} #{source} -o #{t.name} -ldl"
     }
 
     t = task "run_#{output_name}" => [output_name] { |t|
@@ -40,7 +40,7 @@ D_COMPILER.each { |compiler|
 
     desc output_name
     file output_name => [source, dir_name] { |t|
-      sh "#{compiler[:name]} #{compiler[:flags]} -of#{t.name} #{source} -L-ldl"
+      sh "#{compiler[:name]} #{compiler[:flags]}#{t.name} #{source}"
     }
 
     t = task "run_#{output_name}" => [output_name] { |t|
