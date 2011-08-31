@@ -30,15 +30,25 @@ struct MemoryMappedFileReader {
 
 size_t readBytes() {
   size_t count = 0;
+  version(SUM_UP) {
+    size_t sum = 0;
+  }
   for (int i=0; i<10; i++) {
     auto reader = MemoryMappedFileReader("/tmp/shop_with_ids.pb");
     auto b = reader.read();
     while (-1 != b) {
       ++count;
+      version(SUM_UP) {
+        sum += b;
+      }
       b = reader.read();
     }
   }
-  return count;
+  version(SUM_UP) {
+    return count + sum;
+  } else {
+    return count;
+  }
 }
 
 int main(string[] args) {
@@ -46,6 +56,11 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-", __VENDOR__, "-5</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using mmfile and a direct pointer to the slice.</td></tr>");
+  version(SUM_UP) {
+    auto dsc = "sum";
+  } else {
+    auto dsc = "count";
+  }
+  writeln("<tr><td>d2-", __VENDOR__, "-5(", dsc, ")</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using mmfile and a direct pointer to the slice.</td></tr>");
   return 0;
 }

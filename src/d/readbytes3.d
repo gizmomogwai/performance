@@ -40,16 +40,26 @@ struct FileReader {
 
 size_t readBytes() {
   size_t count = 0;
+  version(SUM_UP) {
+    size_t sum = 0;
+  }
   for (int i=0; i<10; i++) {
     auto reader = FileReader("/tmp/shop_with_ids.pb");
     ubyte res;
     auto b = reader.read(res);
     while (b) {
       ++count;
+      version(SUM_UP) {
+        sum += res;
+      }
       b = reader.read(res);
     }
   }
-  return count;
+  version(SUM_UP) {
+    return count + sum;
+  } else {
+    return count;
+  }
 }
 
 int main(string[] args) {
@@ -57,6 +67,11 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-", __VENDOR__, "-3</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.c.stdio.fread with buffering (result is false for eof and returnvalue is an out-param).</td></tr>");
+  version(SUM_UP) {
+    auto dsc = "sum";
+  } else {
+    auto dsc = "count";
+  }
+  writeln("<tr><td>d2-", __VENDOR__, "-3(", dsc, ")</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.c.stdio.fread with buffering (result is false for eof and returnvalue is an out-param).</td></tr>");
   return 0;
 }

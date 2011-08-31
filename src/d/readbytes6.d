@@ -40,16 +40,26 @@ struct FileReader {
 
 size_t readBytes() {
   size_t count = 0;
+  version(SUM_UP) {
+    size_t sum = 0;
+  }
   for (int i=0; i<10; i++) {
     auto reader = FileReader("/tmp/shop_with_ids.pb");
     ubyte buffer;
     auto c = reader.read(buffer);
     while (1 == c) {
       ++count;
+      version(SUM_UP) {
+        sum += buffer;
+      }
       c = reader.read(buffer);
     }
   }
-  return count;
+  version(SUM_UP) {
+    return count + sum;
+  } else {
+    return count;
+  }
 }
 
 int main(string[] args) {
@@ -57,6 +67,11 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-", __VENDOR__, "-6</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.stdio.File with arrayslicing.</td></tr>");
+  version(SUM_UP) {
+    auto dsc = "sum";
+  } else {
+    auto dsc = "count";
+  }
+  writeln("<tr><td>d2-", __VENDOR__, "-6(", dsc, ")</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.stdio.File with arrayslicing.</td></tr>");
   return 0;
 }
