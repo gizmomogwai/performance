@@ -65,6 +65,6 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-7</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using dlopen(\"libc\") and dlsym(\"fread\").</td></tr>");
+  writeln("<tr><td>d2-", __VENDOR__, "-7</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using dlopen(\"libc\") and dlsym(\"fread\").</td></tr>");
   return 0;
 }

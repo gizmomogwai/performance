@@ -58,6 +58,6 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-2</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.c.stdio.fread with buffering (returning nr of bytes and taking a naked ptr for the result).</td></tr>");
+  writeln("<tr><td>d2-", __VENDOR__, "-2</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.c.stdio.fread with buffering (returning nr of bytes and taking a naked ptr for the result).</td></tr>");
   return 0;
 }

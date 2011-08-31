@@ -25,6 +25,6 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-1</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.stream.BufferedFile with ubyte[1].</td></tr>");
+  writeln("<tr><td>d2-", __VENDOR__, "-1</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.stream.BufferedFile with ubyte[1].</td></tr>");
   return 0;
 }

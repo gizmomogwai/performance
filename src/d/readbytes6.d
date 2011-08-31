@@ -57,6 +57,6 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-6</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.stdio.File with arrayslicing.</td></tr>");
+  writeln("<tr><td>d2-", __VENDOR__, "-6</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using std.stdio.File with arrayslicing.</td></tr>");
   return 0;
 }

@@ -46,6 +46,6 @@ int main(string[] args) {
   sw.start();
   auto count = readBytes();
   sw.stop();
-  writeln("<tr><td>d2-5</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using mmfile and a direct pointer to the slice.</td></tr>");
+  writeln("<tr><td>d2-", __VENDOR__, "-5</td><td>", count, "</td><td>", sw.peek().msecs, "</td><td>using mmfile and a direct pointer to the slice.</td></tr>");
   return 0;
 }
