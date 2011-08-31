@@ -13,9 +13,9 @@ desc 'default task'
 task :default
 
 CPP_VARIANTS.each { |variant|
-  CPP_COMPILER.each { |compiler|
-    CPP_SOURCES.each { |source|
-        output_name = "target/#{compiler[:name]}/#{variant[:name]}/#{source}.exe"
+  CPP_SOURCES.each { |source|
+    CPP_COMPILER.each { |compiler|
+      output_name = "target/#{compiler[:name]}/#{variant[:name]}/#{source}.exe"
       dir_name = File.dirname(output_name)
 
       desc dir_name
@@ -37,8 +37,8 @@ CPP_VARIANTS.each { |variant|
 }
 
 D_VERSIONS.each { |version|
-  D_COMPILER.each { |compiler|
-    D_SOURCES.each { |source|
+  D_SOURCES.each { |source|
+    D_COMPILER.each { |compiler|
       output_name = "target/#{compiler[:name]}/#{version}/#{source}.exe"
       dir_name = File.dirname(output_name)
 
